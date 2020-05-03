@@ -1,3 +1,0 @@
-FROM php:7.4-apache
-RUN sudo yum install php-mysqli
-EXPOSE 80
