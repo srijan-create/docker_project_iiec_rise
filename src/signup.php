@@ -40,7 +40,7 @@
             if(isset($_POST['submit']))
             {
                 $flage=0;
-                $con1=mysqli_connect("sqldb","srijan","2000","e_commerce") or die(mysqli_error($con1));
+                $con1=mysqli_connect("mysql","root","eFb31Zfsd","e_commerce") or die(mysqli_error($con1));
                 $email=$_POST['email'];
                 $sq="SELECT email FROM registered_users WHERE email='$email'";
                 $sqr=mysqli_query($con1,$sq) or die(mysqli_error($con1));
@@ -87,7 +87,7 @@
             <?php
             if(isset($_POST['submit']) and $flagp!=1 and $flagc!=1 and $flage!=1)
             {
-            $con=mysqli_connect("sqldb","srijan","2000","e_commerce") or die(mysqli_error($con));
+            $con=mysqli_connect("mysql","root","eFb31Zfsd","e_commerce") or die(mysqli_error($con));
             $name=$_POST['name'];
             $email=$_POST['email'];
             $password=$_POST['password'];

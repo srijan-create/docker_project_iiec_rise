@@ -1,15 +1,31 @@
-version: '3'
+version: '3.2'
 services:
-  web:
-    build: .
+  php:
+    build:
+      context: '.'
+    networks:
+      - backend
+    volumes:
+      - ./src/:/var/www/html/
+    container_name: php
+    depends_on:
+      - mysql
     ports:
       - "8080:80"
-  db:
-    image: mysql
+
+  mysql:
+    image: mysql:latest
+    restart: always
     ports:
       - "3306:3306"
+    volumes:
+      - ./db/mysqldata/:/var/lib/mysql
+    networks:
+      - backend
     environment:
-      - MYSQL_ROOT_PASSWORD=password
-      - MYSQL_USER=user
-      - MYSQL_PASSWORD=password
-      - MYSQL_DATABASE=demodb
+      MYSQL_ROOT_PASSWORD: "eFb31Zfsd"
+      MYSQL_DATABASE: "e_commerce"
+    container_name: mysql
+
+networks:
+  backend:
