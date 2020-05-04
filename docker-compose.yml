@@ -1,0 +1,28 @@
+version: '3.2'
+services:
+        sqldb:
+                image: mysql:5.7
+                volumes:
+                    - db:/var/lib/mysql
+                restart:
+                    always
+                environment:
+                    MYSQL_ROOT_PASSWORD: 2000
+                    MYSQL_DATABASE: e_commerce
+        front:
+                image: php:7.4-apache
+                volumes:
+                    - php:/var/www/html
+                restart:
+                    always
+                depends_on:
+                    - sqldb
+                ports:
+                    - 8081:80
+volumes:
+     db:
+     php:        
+
+
+
+              
